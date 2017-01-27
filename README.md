@@ -1,5 +1,5 @@
 # Todo List: Redux with jQuery Example
-Redux是用來管理狀態(state)框架，可以和React、Angular、jQuery甚至Pure JavaScript一起使用。
+Redux是用來管理狀態(state)的框架，可以和React、Angular、jQuery甚至Pure JavaScript一起使用。
 以下就簡單使用jQuery實作Todo List。
 
 ## 功能介紹/Demo
