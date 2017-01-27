@@ -91,6 +91,6 @@ Action Type可能是「ADD_TODO」等，需要的資料像是task名稱(`actions
 
 ---
 ## 參考資料
-- [Redux with jQuery example](https://codepen.io/mdd/full/wGRqbw/)
 - [Read Me · Redux](http://redux.js.org/)
 - [Redux 中文文檔](http://cn.redux.js.org/index.html)
+- [Redux with jQuery example](https://codepen.io/mdd/full/wGRqbw/)
