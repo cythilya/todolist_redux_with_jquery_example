@@ -73,7 +73,7 @@ Action Type可能是「ADD_TODO」等，需要的資料像是task名稱(`actions
 - dispatch(action)：更新狀態，例如剛剛的例子，新增一個task
 - subscribe(listener)：註冊監聽器
 
-當我們想知道目前的資料/狀態時，就可以用`getState()`取得目前狀態。
+當我們想知道目前的狀態時，就可以用`getState()`取得。
 
   	var state = todosStore.getState(); //取得目前Todo List的內容
 
