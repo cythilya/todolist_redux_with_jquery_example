@@ -19,8 +19,8 @@ Redux是用來管理狀態(state)的框架，可以和React、Angular、jQuery�
 程式碼主要分成三個部份：
 
 - Reducer：更新state的函式，嚴格限制相同輸入要能得到相同輸出(functional programming的概念)
-- Store：儲存state的地方，用來連接Action和Reducer
 - Action：通知有事情發生，必須更新state
+- Store：儲存state的地方，用來連接Action和Reducer
 
 由以上可知，這個Todo List裡面存的資料就是狀態，只要狀態更新，例如新增task、標示一個task為完成，就重新繪製Todo List區塊。而「新增task、標示一個task為完成」都是動作(Action)，動作會告知狀態更新，狀態一改變，Store就會做指定的事情，例如重繪元件。
 
