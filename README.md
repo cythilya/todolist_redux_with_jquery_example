@@ -5,7 +5,7 @@ Redux是用來管理狀態(state)的框架，可以和React、Angular、jQuery�
 ## 功能介紹
 先來看看完成的樣子。
 
-![](demo/demo_1.gif)
+![](demo.gif)
 
 功能有：
 
