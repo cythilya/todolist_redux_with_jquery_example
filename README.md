@@ -51,7 +51,7 @@ Action Type可能是「ADD_TODO」等，需要的資料像是task名稱(`actions
 ### Action
 用來通知有事情發生，必須更新state。
 
-如下所示，當我們按下新增按鈕來增加一個task時，就會到input抓取使用者輸入的文字來更新state，把新的資料加到state裡面－使用`store.dispatch`來更新狀態，其中要傳入動作的類別「ADD_TODO」和剛抓取的使用者的輸入內容「newValue」。
+如下所示，當我們按下新增按鈕來增加一個task時，就會到input抓取使用者輸入的文字來更新state－使用`store.dispatch`來更新狀態，其中要傳入動作的類別「ADD_TODO」和剛抓取的使用者的輸入內容「newValue」。
 
     $('.add').click(() => {
       var newValue = $('.input_new_item').val();
