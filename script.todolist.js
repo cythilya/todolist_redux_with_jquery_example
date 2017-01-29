@@ -106,7 +106,6 @@ $('.list').on('change', '.complete-status', function() {
     id: $(this).parents('.item').data('id'),
     completed: isCompleted
   });
-
 });
 
 $('.filter-complete').click(() => {
