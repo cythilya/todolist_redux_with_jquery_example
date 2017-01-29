@@ -1,3 +1,7 @@
+const SHOW_ALL = 'SHOW_ALL';
+const SHOW_COMPLETED = 'SHOW_COMPLETED';
+var counter = 0;
+
 function findElement(id, array) {
   return array.map(function(element) {
     return element.id
@@ -5,32 +9,37 @@ function findElement(id, array) {
 }
 
 //Reducer：更新state的函式
-const todos = (state = { todos: [], filter: 'all', counter: 0 }, actions) => {
+const filter = (state = SHOW_ALL, action) => {
+  switch (action.type) {
+    case SHOW_ALL:
+      return action.type
+    case SHOW_COMPLETED:
+      return action.type
+    default:
+      return state
+  }
+}
+
+const todos = (state = [], actions) => {
   switch(actions.type) {
     case 'ADD_TODO':
-      state.todos.push({
-        id: state.counter++,
+      state.push({
+        id: counter++,
         name: actions.name,
         completed: false
       });
       break;
     case 'DELETE_TODO':
-      state = Object.assign({}, state, state.todos.splice(findElement(actions.id, state.todos), 1));
+      state.splice(findElement(actions.id, state), 1);
       break;
     case 'EDIT_TODO':
-      state.todos[findElement(actions.id, state.todos)].name = actions.name;
+      state[findElement(actions.id, state)].name = actions.name;
       break;
     case 'COMPLETE_TODO':
-      state.todos[findElement(actions.id, state.todos)].completed = actions.completed;
+      state[findElement(actions.id, state)].completed = actions.completed;
       break;
     case 'INCOMPLETE_TODO':
-      state.todos[findElement(actions.id, state.todos)].completed = actions.completed;
-      break;
-    case 'FILTER_COMPLETED':
-      state.filter = 'completed';
-      break;
-    case 'FILTER_ALL':
-     state.filter = 'all'
+      state.todos[findElement(actions.id, state)].completed = actions.completed;
       break;
     default:
       break;
@@ -40,7 +49,11 @@ const todos = (state = { todos: [], filter: 'all', counter: 0 }, actions) => {
 }
 
 //Store：儲存state的地方
-const todosStore = Redux.createStore(todos);
+const todoApp = Redux.combineReducers({
+  filter,
+  todos
+});
+var todosStore = Redux.createStore(todoApp)
 
 //Action：使用todosStore.dispatch來通知有事情發生，必須更新state
 $('.add').click(() => {
@@ -98,13 +111,13 @@ $('.list').on('change', '.complete-status', function() {
 
 $('.filter-complete').click(() => {
   todosStore.dispatch({
-    type: 'FILTER_COMPLETED'
+    type: SHOW_COMPLETED
   });
 });
 
 $('.filter-all').click(() => {
   todosStore.dispatch({
-    type: 'FILTER_ALL'
+    type: SHOW_ALL
   });
 });
 
@@ -117,7 +130,7 @@ todosStore.subscribe(() => {
     let HTML = '';
     let item = state.todos[i];
     let status = item.completed ? 'checked' : '';
-    let hide = (state.filter === 'completed' && !item.completed) ? 'hide' : '';
+    let hide = (state.filter === SHOW_COMPLETED && !item.completed) ? 'hide' : '';
 
     HTML += [
       '<li class="item ' + hide + '" data-id="' + item.id + '">',
