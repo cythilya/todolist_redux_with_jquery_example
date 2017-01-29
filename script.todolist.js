@@ -1,4 +1,4 @@
-function findPosition(id, array) {
+function findElement(id, array) {
   return array.map(function(element) {
     return element.id
   }).indexOf(id);
@@ -15,16 +15,16 @@ const todos = (state = { todos: [], filter: 'all', counter: 0 }, actions) => {
       });
       break;
     case 'DELETE_TODO':
-      state = Object.assign({}, state, state.todos.splice(findPosition(actions.id, state.todos), 1));
+      state = Object.assign({}, state, state.todos.splice(findElement(actions.id, state.todos), 1));
       break;
     case 'EDIT_TODO':
-      state.todos[findPosition(actions.id, state.todos)].name = actions.name;
+      state.todos[findElement(actions.id, state.todos)].name = actions.name;
       break;
     case 'COMPLETE_TODO':
-      state.todos[findPosition(actions.id, state.todos)].completed = actions.completed;
+      state.todos[findElement(actions.id, state.todos)].completed = actions.completed;
       break;
     case 'INCOMPLETE_TODO':
-      state.todos[findPosition(actions.id, state.todos)].completed = actions.completed;
+      state.todos[findElement(actions.id, state.todos)].completed = actions.completed;
       break;
     case 'FILTER_COMPLETED':
       state.filter = 'completed';
